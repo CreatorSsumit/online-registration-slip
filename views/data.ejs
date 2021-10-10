@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js" integrity="sha256-w6/1B0uwkpR3uX0YUw3k2zzHnq6xDNdVZHLIdz8xV6I=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container" style="background-color:rgb(42, 255, 173); width: 100%;height: 100vh; display: flex;justify-content: center;align-items: center; padding: 10px;" id='container'>
+
+        <div id="ss" style="width: 500px;padding: 10px; height: 500px;border-radius: 5px; background-color: #fff">
+            <h1 style="color: rgb(75, 75, 75);letter-spacing: 1px; font-size: 25px; text-align: center; font-weight: 400;">Registration fees slip</h1>
+
+            <div style="width:80%; color: rgb(151, 151, 151);  padding: 40px; height: 60%; background-color: #fff">
+
+
+                <h6 style="font-size: 17px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; position: absolute;top: 14%; font-weight: 500;"> Name: </h6>
+                <h6 style="font-size: 17px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; color: rgb(21, 181, 255); position: absolute;top: 14%;left: 45%; font-weight: 500;">
+                    <%= data.name%>
+                </h6><br>
+                <h6 style="font-size: 17px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; position: absolute; top: 19%; font-weight:500;"> Course: </h6>
+                <h6 style="font-size: 17px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; color: rgb(21, 181, 255); position: absolute;top: 19%;left: 45%; font-weight: 500;">
+                    <%= data.value%>
+                </h6><br>
+                <h6 style="font-size: 17px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; position: absolute; top: 24%; font-weight:500;"> Joining date: </h6>
+                <h6 style="font-size: 17px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; color: rgb(21, 181, 255); position: absolute;top: 24%;left: 45%; font-weight: 500;">
+                    <%= data.date%>
+                </h6><br>
+                <h6 style="font-size: 17px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; position: absolute;top: 30%; font-weight:500;"> Collage Name: </h6>
+                <h6 style="font-size: 17px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; color: rgb(21, 181, 255); position: absolute;top: 30%;left: 45%; font-weight: 500;">
+                    <%= data.collagename%>
+                </h6><br>
+                <h6 style="font-size: 17px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; position: absolute; top: 35%; font-weight:500;"> Price: </h6>
+                <h6 style="font-size: 17px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; color: rgb(5, 143, 161); position: absolute;top: 35%;left: 45%; font-weight: 500;">
+                    <%= price%>
+                </h6>
+
+
+                <img style="position: absolute;left: 35%; top: 50%;" src="../images/seal.png" width="200" height="200">
+            </div>
+
+        </div>
+
+        <!-- <button id="jj">click</button> -->
+
+        <br>
+
+
+        <script>
+            const capture = () => {
+                const body = document.querySelector('#ss');
+                body.id = 'ss';
+                html2canvas(document.querySelector("#ss")).then(canvas => {
+                    document.body.appendChild(canvas);
+                }).then(() => {
+                    var canvas = document.querySelector('canvas');
+                    canvas.style.display = 'none';
+                    var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+                    var a = document.createElement("a");
+                    a.setAttribute('download', 'myImage.png');
+                    a.setAttribute('href', image);
+                    a.click();
+                });
+            };
+
+            // var c = document.querySelector("#jj");
+            // c.addEventListener("click", function() {
+            //     capture();
+            // })
+            capture();
+        </script>
+        <!-- Script -->
+
+
+</body>
+
+</html>
